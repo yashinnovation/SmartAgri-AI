@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-container":"#8cf5b2","on-tertiary-fixed-variant":"#004c6e","primary-fixed-dim":"#79db8d","primary-container":"#15803d","surface-bright":"#faf8ff","on-tertiary-fixed":"#001e2f","surface-tint":"#006d30","outline-variant":"#becabc","on-secondary-fixed":"#00210f","on-error":"#ffffff","surface-variant":"#dae2fd","secondary-fixed":"#8ff8b4","on-secondary":"#ffffff","on-primary":"#ffffff","tertiary-fixed-dim":"#89ceff","on-surface-variant":"#3f493f","on-primary-fixed-variant":"#005323","primary":"#00652c","on-secondary-container":"#007241","surface":"#faf8ff","surface-container-low":"#f2f3ff","surface-dim":"#d2d9f4","primary-fixed":"#95f8a7","surface-container-highest":"#dae2fd","surface-container-high":"#e2e7ff","tertiary-container":"#0076a9","on-surface":"#131b2e","on-primary-fixed":"#00210a","tertiary":"#005c85","tertiary-fixed":"#c9e6ff","on-tertiary":"#ffffff","outline":"#6f7a6e","inverse-on-surface":"#eef0ff","error":"#ba1a1a","on-background":"#131b2e","on-secondary-fixed-variant":"#00522d","error-container":"#ffdad6","secondary-fixed-dim":"#73db9a","on-tertiary-container":"#eaf4ff","inverse-primary":"#79db8d","secondary":"#006d3e","surface-container-lowest":"#ffffff","on-error-container":"#93000a","on-primary-container":"#d3ffd5","inverse-surface":"#283044","surface-container":"#eaedff","background":"#faf8ff"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-xs":"0.25rem","space-md":"1rem",gutter:"1.25rem","margin-lg":"2.5rem",margin:"1rem","space-xl":"2rem","space-2xl":"3rem","gutter-lg":"2rem","space-sm":"0.5rem","space-lg":"1.5rem","margin-md":"1.5rem"},fontFamily:{"body-lg":["Inter"],"headline-md":["Inter"],"headline-lg":["Inter"],"body-md":["Inter"],"headline-sm":["Inter"],"label-sm":["Inter"],"label-lg":["Inter"],"display-lg-mobile":["Inter"],"body-sm":["Inter"],"display-lg":["Inter"],"label-md":["Inter"]},fontSize:{"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"headline-md":["22px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-lg":["28px",{lineHeight:"36px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-md":["16px",{lineHeight:"24px",fontWeight:"400"}],"headline-sm":["18px",{lineHeight:"24px",fontWeight:"600"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}],"label-lg":["15px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"display-lg-mobile":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],"body-sm":["14px",{lineHeight:"20px",fontWeight:"400"}],"display-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-md":["13px",{lineHeight:"18px",letterSpacing:"0.02em",fontWeight:"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin-md lg:px-margin-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><img alt="AgriSmart AI Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WFeopV9FtlFH4kbRJe9uwbYiVcmu4948po0MsuePT8ex14hTgBYZUjFRd5Mwiic5IcdQEtYMgma2SblM3AeJW0R3-Vo6S4tn9OIVDzrRKN__l2TH1d5Wh3QC-Ghs4sEMQZJDwHowsbbGMYVbSn1y2qF7Hf3fFQnlmUCVG0ur8GR3OX1rNO7tSzJhGL7VA9YZuN6OTAsHcOiVg5KyPwEBWW98xTJa4Y3hSatPgDb2AOSsrbFfjG9oGv-fo"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">AgriSmart AI</span></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md text-label-md rounded-lg"><a aria-current="page" class="px-space-sm py-space-xs transition-colors bg-primary-container text-on-primary font-label-md text-label-md rounded-lg" data-path="home" href="#">Home</a><a class="px-space-sm py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="dashboard" href="#">Dashboard</a><a class="px-space-sm py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="disease-detection" href="#">Disease Detection</a><a class="px-space-sm py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="crop-recommendation" href="#">Crop Recommendation</a><a class="px-space-sm py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="soil-health" href="#">Soil Health</a><a class="px-space-sm py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="weather" href="#">Weather</a><a class="px-space-sm py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="ai-assistant" href="#">AI Assistant</a></nav><div class="flex items-center gap-space-sm"><a class="hidden sm:inline-flex items-center justify-center px-space-lg py-space-sm rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-[0_1px_3px_0_rgba(15,23,42,0.05)] hover:bg-primary transition-all" data-path="dashboard" href="#">Open Dashboard</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><button class="xl:hidden p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined">menu</span></button></div></div></header><main class="w-full flex-1 pt-20 bg-surface"><div class="flex flex-col w-full">
+<!-- Hero Section -->
+<section class="relative w-full max-w-7xl mx-auto px-margin-md lg:px-margin-lg pt-space-xl pb-space-2xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-center">
+<!-- Text Content Left -->
+<div class="lg:col-span-6 flex flex-col items-start gap-space-md">
+<!-- Pill Badge -->
+<div class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-secondary-container text-on-secondary-container shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-sm text-label-sm tracking-wide uppercase">AI-Powered Smart Farming</span>
+</div>
+<!-- Main Headline -->
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight leading-tight">
+          Smarter Farming.<br/>
+<span class="text-primary">Better Decisions.</span>
+</h1>
+<!-- Subheading -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+          AgriSmart AI helps farmers monitor crop health, understand soil and weather conditions, and receive simple AI-powered recommendations.
+        </p>
+<!-- CTA Action Buttons -->
+<div class="flex flex-wrap items-center gap-space-sm pt-space-sm w-full sm:w-auto">
+<a class="inline-flex items-center justify-center gap-space-xs px-space-xl py-space-md rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary transition-all group" data-path="dashboard" href="#">
+<span>Get Started</span>
+<span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+<a class="inline-flex items-center justify-center px-space-lg py-space-md rounded-lg bg-surface-container-lowest text-on-surface font-label-lg text-label-lg shadow-sm hover:bg-surface-container transition-all" href="#features">
+            Explore Features
+          </a>
+</div>
+<!-- Key Metrics Strip -->
+<div class="grid grid-cols-3 gap-space-md pt-space-lg w-full max-w-lg">
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg text-on-surface">92%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Diagnostic Accuracy</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg text-on-surface">35%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Water Conserved</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg text-on-surface">24/7</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Field Support</span>
+</div>
+</div>
+</div>
+<!-- Hero Visual Right -->
+<div class="lg:col-span-6 relative mt-space-lg lg:mt-0">
+<!-- Main Image Frame -->
+<div class="relative rounded-2xl overflow-hidden shadow-xl bg-surface-container-high aspect-[4/3] w-full">
+<img alt="Farmer inspecting healthy crops with AgriSmart AI tablet application" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQGQRZqSFhV8PW-jMDAKwVTcMu1KKQXDlLokh5ybpTBS9VJHiPSlLQaikdVW2KXcCfdVuMfT5vyD13AS51CAH58iZv1ibkv8pNzGRFniuDDAZw8757YwtynEcCebrksj-NmlohsEZHmosQNDJWFM59mVU51LccgX-Lz0uHe9RjPcwKzJ9ZGUPKuoShrJfYDn-ODdbd5lnuU73T0Rq-Fjy4kwupl4U4oqCsTO5iTpCArp44cXkUvhEJ"/>
+<!-- Subtle Gradient Scrim on Image -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none"></div>
+<!-- Live Diagnostic Card Overlay Top-Right -->
+<div class="absolute top-space-md right-space-md bg-surface-container-lowest/95 backdrop-blur-md px-space-md py-space-xs rounded-xl shadow-md flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Live Field Telemetry</span>
+</div>
+<!-- Floating Accuracy Metric Pill Bottom-Left -->
+<div class="absolute bottom-space-md left-space-md right-space-md sm:right-auto bg-surface-container-lowest/95 backdrop-blur-md p-space-md rounded-xl shadow-lg flex items-center gap-space-md max-w-sm">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container text-[26px]">verified</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">92% Accuracy</span>
+<span class="material-symbols-outlined text-primary text-[18px]">trending_up</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">In leaf disease & crop stress detection</span>
+</div>
+</div>
+</div>
+<!-- Ambient Backdrop Decorative Pill (no screen bleed) -->
+<div class="absolute -bottom-6 -right-6 w-48 h-48 rounded-full bg-secondary-container/40 blur-2xl -z-10 pointer-events-none"></div>
+</div>
+</div>
+</section>
+<!-- Section 1: Everything a Farmer Needs in One Place -->
+<section class="w-full bg-surface-container-low py-space-2xl" id="features">
+<div class="max-w-7xl mx-auto px-margin-md lg:px-margin-lg flex flex-col gap-space-xl">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="max-w-xl flex flex-col gap-space-xs">
+<span class="font-label-md text-label-md text-primary uppercase tracking-wider">Comprehensive Agronomy Suite</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Everything a Farmer Needs in One Place</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          Actionable field insights built to replace guesswork with precision recommendations straight from your tablet or mobile device.
+        </p>
+</div>
+<!-- 6 Bento / Grid Feature Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1: Crop Disease Detection -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center mb-space-md group-hover:bg-secondary-container transition-colors">
+<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">Crop Disease Detection</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Instantly detect crop diseases by uploading a simple leaf photo. Get pathogen names, severity stages, and organic remedies.
+            </p>
+</div>
+<div class="pt-space-lg flex items-center justify-between">
+<span class="font-label-sm text-label-sm px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface-variant font-medium">Computer Vision</span>
+<a class="text-primary hover:text-on-primary-fixed-variant flex items-center gap-1 font-label-md text-label-md" data-path="disease-detection" href="#">
+<span>Scan leaf</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Card 2: AI Farming Assistant -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center mb-space-md group-hover:bg-secondary-container transition-colors">
+<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">AI Farming Assistant</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Get practical 24/7 answers to daily farming challenges, pesticide dosage calculations, and regional planting schedules in your language.
+            </p>
+</div>
+<div class="pt-space-lg flex items-center justify-between">
+<span class="font-label-sm text-label-sm px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface-variant font-medium">NLP Copilot</span>
+<a class="text-primary hover:text-on-primary-fixed-variant flex items-center gap-1 font-label-md text-label-md" data-path="ai-assistant" href="#">
+<span>Ask assistant</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Card 3: Crop Recommendation -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center mb-space-md group-hover:bg-secondary-container transition-colors">
+<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">Crop Recommendation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Determine the ideal crops to sow based on soil fertility, climate telemetry, seasonal rain forecasts, and expected economic yield.
+            </p>
+</div>
+<div class="pt-space-lg flex items-center justify-between">
+<span class="font-label-sm text-label-sm px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface-variant font-medium">Predictive Agronomy</span>
+<a class="text-primary hover:text-on-primary-fixed-variant flex items-center gap-1 font-label-md text-label-md" data-path="crop-recommendation" href="#">
+<span>View crops</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Card 4: Weather Intelligence -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center mb-space-md group-hover:bg-secondary-container transition-colors">
+<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">Weather Intelligence</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              5-day localized microclimate forecasts and smart spraying conditions alerts to avoid chemical runoff and safeguard pollinators.
+            </p>
+</div>
+<div class="pt-space-lg flex items-center justify-between">
+<span class="font-label-sm text-label-sm px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface-variant font-medium">Hyperlocal Forecast</span>
+<a class="text-primary hover:text-on-primary-fixed-variant flex items-center gap-1 font-label-md text-label-md" data-path="weather" href="#">
+<span>Forecast</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Card 5: Soil Health Analysis -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center mb-space-md group-hover:bg-secondary-container transition-colors">
+<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">Soil Health Analysis</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Track Nitrogen (N), Phosphorus (P), Potassium (K) and pH levels with actionable insights to replenish nutrients sustainably.
+            </p>
+</div>
+<div class="pt-space-lg flex items-center justify-between">
+<span class="font-label-sm text-label-sm px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface-variant font-medium">NPK Profiling</span>
+<a class="text-primary hover:text-on-primary-fixed-variant flex items-center gap-1 font-label-md text-label-md" data-path="soil-health" href="#">
+<span>View soil stats</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Card 6: Smart Irrigation -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center mb-space-md group-hover:bg-secondary-container transition-colors">
+<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="12" cy="12" r="3"></circle>
+</svg>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">Smart Irrigation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Calculate exact root-zone water requirements to conserve water reserves, lower pumping energy costs, and prevent crop root rot.
+            </p>
+</div>
+<div class="pt-space-lg flex items-center justify-between">
+<span class="font-label-sm text-label-sm px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface-variant font-medium">Hydration Logic</span>
+<a class="text-primary hover:text-on-primary-fixed-variant flex items-center gap-1 font-label-md text-label-md" data-path="dashboard" href="#">
+<span>View schedules</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Simple 3-Step Workflow -->
+<section class="w-full max-w-7xl mx-auto px-margin-md lg:px-margin-lg py-space-2xl">
+<div class="flex flex-col gap-space-xl">
+<!-- Section Header -->
+<div class="text-center max-w-2xl mx-auto flex flex-col items-center gap-space-xs">
+<span class="font-label-md text-label-md text-primary uppercase tracking-wider">Fast & Intuitive</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Simple 3-Step Workflow</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Built for the field. No complex setups or endless configurations—get actionable clarity in under two minutes.
+        </p>
+</div>
+<!-- 3 Step Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Step 01 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm relative flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-display-lg text-display-lg text-secondary/30 font-extrabold leading-none">01</span>
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">add_a_photo</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Enter Farm Data</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Input basic soil lab readings, select crop type, or simply take a photo of an affected leaf directly from your smartphone camera.
+            </p>
+</div>
+<div class="mt-auto pt-space-md">
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full w-1/3 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Step 02 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm relative flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-display-lg text-display-lg text-secondary/30 font-extrabold leading-none">02</span>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-[20px]">neurology</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">AI Analyzes Conditions</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Proprietary machine learning models cross-reference localized weather radars, soil nutrient ranges, and disease symptom catalogs.
+            </p>
+</div>
+<div class="mt-auto pt-space-md">
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full w-2/3 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Step 03 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm relative flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-display-lg text-display-lg text-secondary/30 font-extrabold leading-none">03</span>
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">task_alt</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Get Actionable Recommendations</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Receive step-by-step guidance: exact irrigation schedules, fertilizer dosages, safe spray windows, and harvesting timelines.
+            </p>
+</div>
+<div class="mt-auto pt-space-md">
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full w-full rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Future Scope Subtle Banner -->
+<section class="w-full max-w-7xl mx-auto px-margin-md lg:px-margin-lg pb-space-lg">
+<div class="bg-surface-container p-space-md lg:p-space-lg rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container text-[20px]">rocket_launch</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wide">Roadmap Preview</span>
+<p class="font-body-sm text-body-sm text-on-surface font-medium">
+            Upcoming in Phase 2: In-ground IoT sensor integration, autonomous drone imagery, and real-time market price forecasting.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs flex-shrink-0">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm bg-surface-container-lowest px-space-md py-space-xs rounded-full text-on-surface shadow-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+          Active Development
+        </span>
+</div>
+</div>
+</section>
+<!-- Bottom CTA Section -->
+<section class="w-full max-w-7xl mx-auto px-margin-md lg:px-margin-lg py-space-xl pb-space-2xl">
+<div class="bg-surface-container-lowest rounded-2xl p-space-xl lg:p-space-2xl shadow-md text-center flex flex-col items-center justify-center gap-space-md relative overflow-hidden">
+<!-- Decorative Backdrop Circles -->
+<div class="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-16 -right-16 w-64 h-64 rounded-full bg-primary-container/10 blur-3xl pointer-events-none"></div>
+<!-- Icon Pin -->
+<div class="w-14 h-14 rounded-2xl bg-secondary-container flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-on-secondary-container text-[28px]">eco</span>
+</div>
+<!-- Heading -->
+<div class="max-w-2xl flex flex-col gap-space-xs">
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">
+          Make Better Farming Decisions With AI
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Join thousands of farmers and agronomists making data-driven decisions this season. Get started in minutes for free.
+        </p>
+</div>
+<!-- Action Button Group -->
+<div class="flex flex-wrap items-center justify-center gap-space-sm pt-space-xs w-full sm:w-auto">
+<a class="inline-flex items-center justify-center gap-space-xs px-space-xl py-space-md rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary transition-all group" data-path="dashboard" href="#">
+<span>Try AgriSmart AI</span>
+<span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+<a class="inline-flex items-center justify-center px-space-lg py-space-md rounded-lg bg-surface-container text-on-surface font-label-lg text-label-lg shadow-sm hover:bg-surface-container-high transition-all" data-path="disease-detection" href="#">
+          Test Disease Scanner
+        </a>
+</div>
+<!-- Reassurance Badges -->
+<div class="flex flex-wrap items-center justify-center gap-space-lg pt-space-sm text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px]">check_circle</span>
+<span>No credit card required</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px]">check_circle</span>
+<span>Works offline in remote fields</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px]">check_circle</span>
+<span>Open agricultural datasets</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Simple micro-interactions for smooth scrolling and clean hash routing
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+</script></main><footer class="w-full bg-surface-container-low shadow-[0_-1px_8px_rgba(0,0,0,0.03)]"><div class="max-w-7xl mx-auto px-margin-md lg:px-margin-lg py-space-2xl flex flex-col gap-space-xl"><div class="flex flex-col md:flex-row md:items-start justify-between gap-space-lg"><div class="max-w-md"><div class="flex items-center gap-space-sm mb-space-sm"><img alt="AgriSmart AI Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WFeopV9FtlFH4kbRJe9uwbYiVcmu4948po0MsuePT8ex14hTgBYZUjFRd5Mwiic5IcdQEtYMgma2SblM3AeJW0R3-Vo6S4tn9OIVDzrRKN__l2TH1d5Wh3QC-Ghs4sEMQZJDwHowsbbGMYVbSn1y2qF7Hf3fFQnlmUCVG0ur8GR3OX1rNO7tSzJhGL7VA9YZuN6OTAsHcOiVg5KyPwEBWW98xTJa4Y3hSatPgDb2AOSsrbFfjG9oGv-fo"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">AgriSmart AI</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">AI-powered tools for smarter and more sustainable farming.</p></div><div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-lg"><nav class="flex flex-wrap items-center gap-space-md font-label-md text-label-md"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="#">Home</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#">Dashboard</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="disease-detection" href="#">Disease Detection</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="ai-assistant" href="#">AI Assistant</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="crop-recommendation" href="#">Crop Recommendation</a></nav></div></div><div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pt-space-lg bg-surface-container-low"><div class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm w-fit"><span class="material-symbols-outlined text-[14px]">sensors</span><span>Future Scope: IoT sensors, Drone imagery & Yield prediction</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">© 2025 AgriSmart AI. Built for Sustainable Agriculture Hackathon.</p></div></div></footer></body></html>

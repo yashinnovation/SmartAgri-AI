@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-container":"#8cf5b2","on-tertiary-fixed-variant":"#004c6e","primary-fixed-dim":"#79db8d","primary-container":"#15803d","surface-bright":"#faf8ff","on-tertiary-fixed":"#001e2f","surface-tint":"#006d30","outline-variant":"#becabc","on-secondary-fixed":"#00210f","on-error":"#ffffff","surface-variant":"#dae2fd","secondary-fixed":"#8ff8b4","on-secondary":"#ffffff","on-primary":"#ffffff","tertiary-fixed-dim":"#89ceff","on-surface-variant":"#3f493f","on-primary-fixed-variant":"#005323","primary":"#00652c","on-secondary-container":"#007241","surface":"#faf8ff","surface-container-low":"#f2f3ff","surface-dim":"#d2d9f4","primary-fixed":"#95f8a7","surface-container-highest":"#dae2fd","surface-container-high":"#e2e7ff","tertiary-container":"#0076a9","on-surface":"#131b2e","on-primary-fixed":"#00210a","tertiary":"#005c85","tertiary-fixed":"#c9e6ff","on-tertiary":"#ffffff","outline":"#6f7a6e","inverse-on-surface":"#eef0ff","error":"#ba1a1a","on-background":"#131b2e","on-secondary-fixed-variant":"#00522d","error-container":"#ffdad6","secondary-fixed-dim":"#73db9a","on-tertiary-container":"#eaf4ff","inverse-primary":"#79db8d","secondary":"#006d3e","surface-container-lowest":"#ffffff","on-error-container":"#93000a","on-primary-container":"#d3ffd5","inverse-surface":"#283044","surface-container":"#eaedff","background":"#faf8ff"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-xs":"0.25rem","space-md":"1rem",gutter:"1.25rem","margin-lg":"2.5rem",margin:"1rem","space-xl":"2rem","space-2xl":"3rem","gutter-lg":"2rem","space-sm":"0.5rem","space-lg":"1.5rem","margin-md":"1.5rem"},fontFamily:{"body-lg":["Inter"],"headline-md":["Inter"],"headline-lg":["Inter"],"body-md":["Inter"],"headline-sm":["Inter"],"label-sm":["Inter"],"label-lg":["Inter"],"display-lg-mobile":["Inter"],"body-sm":["Inter"],"display-lg":["Inter"],"label-md":["Inter"]},fontSize:{"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"headline-md":["22px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-lg":["28px",{lineHeight:"36px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-md":["16px",{lineHeight:"24px",fontWeight:"400"}],"headline-sm":["18px",{lineHeight:"24px",fontWeight:"600"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}],"label-lg":["15px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"display-lg-mobile":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],"body-sm":["14px",{lineHeight:"20px",fontWeight:"400"}],"display-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-md":["13px",{lineHeight:"18px",letterSpacing:"0.02em",fontWeight:"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin-md lg:px-margin-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><img alt="AgriSmart AI Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WFeopV9FtlFH4kbRJe9uwbYiVcmu4948po0MsuePT8ex14hTgBYZUjFRd5Mwiic5IcdQEtYMgma2SblM3AeJW0R3-Vo6S4tn9OIVDzrRKN__l2TH1d5Wh3QC-Ghs4sEMQZJDwHowsbbGMYVbSn1y2qF7Hf3fFQnlmUCVG0ur8GR3OX1rNO7tSzJhGL7VA9YZuN6OTAsHcOiVg5KyPwEBWW98xTJa4Y3hSatPgDb2AOSsrbFfjG9oGv-fo"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">AgriSmart AI</span></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md text-label-md rounded-lg"><a class="px-space-sm py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="home" href="#">Home</a><a aria-current="page" class="px-space-sm py-space-xs transition-colors bg-primary-container text-on-primary font-label-md text-label-md rounded-lg" data-path="dashboard" href="#">Dashboard</a><a class="px-space-sm py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="disease-detection" href="#">Disease Detection</a><a class="px-space-sm py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="crop-recommendation" href="#">Crop Recommendation</a><a class="px-space-sm py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="soil-health" href="#">Soil Health</a><a class="px-space-sm py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="weather" href="#">Weather</a><a class="px-space-sm py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors rounded-lg" data-path="ai-assistant" href="#">AI Assistant</a></nav><div class="flex items-center gap-space-sm"><a class="hidden sm:inline-flex items-center justify-center px-space-lg py-space-sm rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-[0_1px_3px_0_rgba(15,23,42,0.05)] hover:bg-primary transition-all" data-path="dashboard" href="#">Open Dashboard</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><button class="xl:hidden p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined">menu</span></button></div></div></header><main class="w-full flex-1 pt-20 bg-surface"><div class="flex flex-col w-full">
+<div class="max-w-7xl mx-auto w-full px-margin-md lg:px-margin-lg py-space-xl flex flex-col gap-space-xl">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center px-space-sm py-0.5 rounded-full bg-secondary-container/60 text-on-secondary-container font-label-sm text-label-sm">
+            Parcel 04 • North Valley Sector
+          </span>
+<span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Good Morning, Farmer 👋</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-space-xs">
+<span>Here is your farm status for today.</span>
+<span class="opacity-40">•</span>
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+            Updated 15 mins ago
+          </span>
+</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface font-label-lg text-label-lg shadow-sm hover:bg-surface-container-high transition-colors flex items-center gap-space-xs" id="quickReportBtn">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Summary</span>
+</button>
+<button class="px-space-lg py-space-sm rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-sm hover:bg-primary transition-all flex items-center gap-space-xs transform active:scale-95">
+<span class="material-symbols-outlined text-[20px]">add_photo_alternate</span>
+<span>+ New Crop Scan</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between gap-space-md relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">eco</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/80 text-on-secondary-container font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            Healthy
+          </span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant block mb-1">Crop Health</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface">85%</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-label-sm text-label-sm pt-space-xs">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+3% vs last week</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between gap-space-md relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[24px]">water_drop</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+            Moderate
+          </span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant block mb-1">Soil Moisture</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface">38%</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm pt-space-xs">
+<span class="material-symbols-outlined text-[16px]">adjust</span>
+<span>Target: 40% - 50%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between gap-space-md relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">thermostat</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/80 text-on-secondary-container font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            Optimal
+          </span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant block mb-1">Temperature</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface">31°C</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm pt-space-xs">
+<span class="material-symbols-outlined text-[16px]">wb_sunny</span>
+<span>Feels like 33°C, Sunny</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between gap-space-md relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[24px]">rainy</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+            Low Risk
+          </span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant block mb-1">Rain Probability</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface">20%</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm pt-space-xs">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Next 24 hours</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">smart_toy</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">AI Recommendations</h2>
+</div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Prioritized by Farm Impact</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between gap-space-lg hover:shadow-md transition-all">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs text-tertiary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">opacity</span>
+<span>Irrigation Alert</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-snug">Moderate irrigation recommended today</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Soil moisture is slightly dry at 38%. Supply 12L/m² before 9:00 AM.</p>
+</div>
+<button class="w-full py-space-sm px-space-md rounded-lg bg-surface-container text-tertiary font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-space-xs">
+<span>View Irrigation Guide</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between gap-space-lg hover:shadow-md transition-all">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">psychiatry</span>
+<span>Field Surveillance</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-snug">Crop health is stable</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">No active pest outbreaks detected in north parcel. Regular monitoring active.</p>
+</div>
+<button class="w-full py-space-sm px-space-md rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-colors flex items-center justify-center gap-space-xs shadow-sm">
+<span>Scan Field Now</span>
+<span class="material-symbols-outlined text-[16px]">center_focus_strong</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between gap-space-lg hover:shadow-md transition-all">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">filter_drama</span>
+<span>Spray Window</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-snug">No heavy rainfall expected today</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Wind speed 14 km/h. Conditions are optimal for organic pesticide spraying.</p>
+</div>
+<button class="w-full py-space-sm px-space-md rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-space-xs">
+<span>Check Hourly Forecast</span>
+<span class="material-symbols-outlined text-[16px]">air</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-start">
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<div class="bg-surface-container-lowest p-space-lg lg:p-space-xl rounded-xl shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Crop Health Trend</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Past 5 workdays performance index across monitored plots</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1 text-primary font-label-sm text-label-sm bg-secondary-container/30 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                Above Target (80%)
+              </span>
+</div>
+</div>
+<div class="w-full h-48 sm:h-56 relative flex flex-col justify-end">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 500 160">
+<defs>
+<lineargradient id="chartGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#15803d" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#15803d" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<line opacity="0.7" stroke="#dae2fd" stroke-dasharray="3 3" x1="0" x2="500" y1="30" y2="30"></line>
+<line opacity="0.7" stroke="#dae2fd" stroke-dasharray="3 3" x1="0" x2="500" y1="80" y2="80"></line>
+<line opacity="0.7" stroke="#dae2fd" x1="0" x2="500" y1="130" y2="130"></line>
+<path d="M 30,120 L 140,90 L 250,105 L 360,60 L 470,45 L 470,160 L 30,160 Z" fill="url(#chartGradient)"></path>
+<path d="M 30,120 L 140,90 L 250,105 L 360,60 L 470,45" fill="none" stroke="#15803d" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<circle cx="30" cy="120" fill="#ffffff" r="4.5" stroke="#15803d" stroke-width="2.5"></circle>
+<circle cx="140" cy="90" fill="#ffffff" r="4.5" stroke="#15803d" stroke-width="2.5"></circle>
+<circle cx="250" cy="105" fill="#ffffff" r="4.5" stroke="#15803d" stroke-width="2.5"></circle>
+<circle cx="360" cy="60" fill="#ffffff" r="4.5" stroke="#15803d" stroke-width="2.5"></circle>
+<circle cx="470" cy="45" fill="#15803d" r="5.5" stroke="#ffffff" stroke-width="2"></circle>
+</svg>
+<div class="flex justify-between items-center pt-space-sm px-4 text-on-surface-variant font-label-md text-label-md">
+<div class="flex flex-col items-center">
+<span>Mon</span>
+<span class="font-label-sm text-label-sm text-on-surface">80%</span>
+</div>
+<div class="flex flex-col items-center">
+<span>Tue</span>
+<span class="font-label-sm text-label-sm text-on-surface">82%</span>
+</div>
+<div class="flex flex-col items-center">
+<span>Wed</span>
+<span class="font-label-sm text-label-sm text-on-surface">81%</span>
+</div>
+<div class="flex flex-col items-center">
+<span>Thu</span>
+<span class="font-label-sm text-label-sm text-on-surface">84%</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-primary font-semibold">Fri</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">85%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg lg:p-space-xl rounded-xl shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Weekly Farm Condition</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Aggregate metrics: soil hydration stability vs exposure index</p>
+</div>
+<div class="flex items-center gap-space-md text-label-sm font-label-sm">
+<div class="flex items-center gap-1">
+<span class="w-3 h-3 rounded-sm bg-tertiary"></span>
+<span>Moisture</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-3 h-3 rounded-sm bg-secondary-container"></span>
+<span>Sunlight Ratio</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-5 gap-space-sm sm:gap-space-md pt-space-xs">
+<div class="flex flex-col items-center gap-space-xs">
+<div class="h-36 w-full max-w-[48px] bg-surface-container-high rounded-lg flex items-end justify-center gap-1.5 p-1">
+<div class="w-full bg-tertiary rounded-sm transition-all" style="height: 60%"></div>
+<div class="w-full bg-secondary-container rounded-sm transition-all" style="height: 75%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mon</span>
+</div>
+<div class="flex flex-col items-center gap-space-xs">
+<div class="h-36 w-full max-w-[48px] bg-surface-container-high rounded-lg flex items-end justify-center gap-1.5 p-1">
+<div class="w-full bg-tertiary rounded-sm transition-all" style="height: 52%"></div>
+<div class="w-full bg-secondary-container rounded-sm transition-all" style="height: 80%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Tue</span>
+</div>
+<div class="flex flex-col items-center gap-space-xs">
+<div class="h-36 w-full max-w-[48px] bg-surface-container-high rounded-lg flex items-end justify-center gap-1.5 p-1">
+<div class="w-full bg-tertiary rounded-sm transition-all" style="height: 48%"></div>
+<div class="w-full bg-secondary-container rounded-sm transition-all" style="height: 68%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Wed</span>
+</div>
+<div class="flex flex-col items-center gap-space-xs">
+<div class="h-36 w-full max-w-[48px] bg-surface-container-high rounded-lg flex items-end justify-center gap-1.5 p-1">
+<div class="w-full bg-tertiary rounded-sm transition-all" style="height: 42%"></div>
+<div class="w-full bg-secondary-container rounded-sm transition-all" style="height: 85%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Thu</span>
+</div>
+<div class="flex flex-col items-center gap-space-xs">
+<div class="h-36 w-full max-w-[48px] bg-surface-container-high rounded-lg flex items-end justify-center gap-1.5 p-1">
+<div class="w-full bg-tertiary rounded-sm transition-all" style="height: 38%"></div>
+<div class="w-full bg-secondary-container rounded-sm transition-all" style="height: 90%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">Fri</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">notifications_active</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Recent Alerts</h2>
+</div>
+<button class="font-label-sm text-label-sm text-primary hover:underline">Mark all read</button>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-xs relative overflow-hidden transition-all hover:bg-surface-bright">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-amber-400"></div>
+<div class="flex items-center justify-between pl-space-xs">
+<span class="inline-flex items-center gap-1 text-amber-800 font-label-sm text-label-sm bg-amber-50 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                Moisture Alert
+              </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2 hrs ago</span>
+</div>
+<p class="pl-space-xs font-body-sm text-body-sm font-semibold text-on-surface mt-1">
+              Soil moisture is slightly low in Plot B
+            </p>
+<p class="pl-space-xs font-label-sm text-label-sm text-on-surface-variant">
+              Zone 2 drop detected. Automated drip valve is set to standby.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-xs relative overflow-hidden transition-all hover:bg-surface-bright">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-orange-500"></div>
+<div class="flex items-center justify-between pl-space-xs">
+<span class="inline-flex items-center gap-1 text-orange-800 font-label-sm text-label-sm bg-orange-50 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]">pest_control</span>
+                Regional Advisory
+              </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Yesterday</span>
+</div>
+<p class="pl-space-xs font-body-sm text-body-sm font-semibold text-on-surface mt-1">
+              Tomato disease risk detected in neighboring region
+            </p>
+<p class="pl-space-xs font-label-sm text-label-sm text-on-surface-variant">
+              Early blight spotted 4.2 km south. Apply preventive copper fungicide if rain increases.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-xs relative overflow-hidden transition-all hover:bg-surface-bright">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary"></div>
+<div class="flex items-center justify-between pl-space-xs">
+<span class="inline-flex items-center gap-1 text-on-secondary-container font-label-sm text-label-sm bg-secondary-container/60 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Optimal Window
+              </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Today, 7:00 AM</span>
+</div>
+<p class="pl-space-xs font-body-sm text-body-sm font-semibold text-on-surface mt-1">
+              Weather conditions are suitable for spraying
+            </p>
+<p class="pl-space-xs font-label-sm text-label-sm text-on-surface-variant">
+              Humidity at 54% and calm winds provide the ideal uptake interval until 11:30 AM.
+            </p>
+</div>
+</div>
+<div class="bg-primary-container text-on-primary p-space-lg rounded-xl shadow-sm relative overflow-hidden flex flex-col gap-space-md mt-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-primary-container uppercase tracking-wider">Drone Fleet Status</span>
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-headline-sm text-headline-sm">Automated Scan Scheduled</span>
+<p class="font-body-sm text-body-sm text-on-primary-container">Next flight over Plot A & B is set for today at 16:30 PM.</p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-primary-container">Battery: 98% • Ready</span>
+<button class="px-space-sm py-1 rounded bg-on-primary text-primary-container font-label-sm text-label-sm font-semibold hover:bg-surface-bright transition-colors">
+              Manage
+            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const summaryBtn = document.getElementById('quickReportBtn');
+      if (summaryBtn) {
+        summaryBtn.addEventListener('click', () => {
+          summaryBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Generating...</span>';
+          setTimeout(() => {
+            summaryBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span><span>Downloaded</span>';
+            setTimeout(() => {
+              summaryBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">download</span><span>Summary</span>';
+            }, 2000);
+          }, 800);
+        });
+      }
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-low shadow-[0_-1px_8px_rgba(0,0,0,0.03)]"><div class="max-w-7xl mx-auto px-margin-md lg:px-margin-lg py-space-2xl flex flex-col gap-space-xl"><div class="flex flex-col md:flex-row md:items-start justify-between gap-space-lg"><div class="max-w-md"><div class="flex items-center gap-space-sm mb-space-sm"><img alt="AgriSmart AI Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WFeopV9FtlFH4kbRJe9uwbYiVcmu4948po0MsuePT8ex14hTgBYZUjFRd5Mwiic5IcdQEtYMgma2SblM3AeJW0R3-Vo6S4tn9OIVDzrRKN__l2TH1d5Wh3QC-Ghs4sEMQZJDwHowsbbGMYVbSn1y2qF7Hf3fFQnlmUCVG0ur8GR3OX1rNO7tSzJhGL7VA9YZuN6OTAsHcOiVg5KyPwEBWW98xTJa4Y3hSatPgDb2AOSsrbFfjG9oGv-fo"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">AgriSmart AI</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">AI-powered tools for smarter and more sustainable farming.</p></div><div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-lg"><nav class="flex flex-wrap items-center gap-space-md font-label-md text-label-md"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="#">Home</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#">Dashboard</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="disease-detection" href="#">Disease Detection</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="ai-assistant" href="#">AI Assistant</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="crop-recommendation" href="#">Crop Recommendation</a></nav></div></div><div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pt-space-lg bg-surface-container-low"><div class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm w-fit"><span class="material-symbols-outlined text-[14px]">sensors</span><span>Future Scope: IoT sensors, Drone imagery & Yield prediction</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">© 2025 AgriSmart AI. Built for Sustainable Agriculture Hackathon.</p></div></div></footer></body></html>
