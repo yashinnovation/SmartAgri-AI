@@ -1,6 +1,7 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from sqlalchemy.orm import Session
 from app.config import settings
 from app.database import Base, engine, SessionLocal
 from app.utils.sample_data import init_demo_data
@@ -193,7 +194,6 @@ from app.api.routes import analytics
 # Directly register Farm management endpoint
 from app.schemas.farm import FarmCreate, FarmUpdate, FarmResponse
 from app.models.farm import Farm
-from fastapi import Depends
 
 @app.post("/api/farms", response_model=FarmResponse, tags=["Farms"])
 def create_farm(payload: FarmCreate, db: Session = Depends(SessionLocal)):
