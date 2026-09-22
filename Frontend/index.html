@@ -371,17 +371,32 @@
 </section>
 </div>
 <script>
-  // Simple micro-interactions for smooth scrolling and clean hash routing
+  // Change these filenames only if your frontend files use different names.
+  const PAGE_PATHS = {
+    home: "index.html",
+    dashboard: "dashboard.html",
+    "disease-detection": "disease-detection.html",
+    "crop-recommendation": "crop-recommendation.html",
+    "soil-health": "soil-health.html",
+    weather: "weather.html",
+    "ai-assistant": "ai-assistant.html"
+  };
+
+  document.querySelectorAll("[data-path]").forEach(link => {
+    link.addEventListener("click", function (event) {
+      const target = PAGE_PATHS[this.dataset.path];
+      if (!target) return;
+      event.preventDefault();
+      window.location.href = target;
+    });
+  });
+
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href').substring(1);
-      const targetElement = document.getElementById(targetId);
+    anchor.addEventListener("click", function (event) {
+      const targetElement = document.getElementById(this.getAttribute("href").substring(1));
       if (targetElement) {
-        e.preventDefault();
-        targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+        event.preventDefault();
+        targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
   });
