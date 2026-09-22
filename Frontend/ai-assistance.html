@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Assistant - SmartAgri AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f8f3;
+            color: #1f3d2b;
+        }
+
+        /* NAVBAR */
+        nav {
+            height: 70px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #2e7d32;
+        }
+
+        /* MAIN */
+        .container {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #666;
+        }
+
+        /* CHAT BOX */
+        .chat-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: #2e7d32;
+            color: white;
+            padding: 20px;
+        }
+
+        .chat-header h2 {
+            margin-bottom: 5px;
+        }
+
+        .chat-header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .chat-messages {
+            height: 450px;
+            overflow-y: auto;
+            padding: 25px;
+            background: #fafafa;
+        }
+
+        .message {
+            display: flex;
+            margin-bottom: 18px;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 75%;
+            padding: 13px 17px;
+            border-radius: 14px;
+            line-height: 1.5;
+            font-size: 15px;
+        }
+
+        .message.bot .message-content {
+            background: #e8f5e9;
+            color: #234b2c;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.user .message-content {
+            background: #2e7d32;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        /* INPUT */
+        .chat-input-area {
+            display: flex;
+            padding: 18px;
+            border-top: 1px solid #ddd;
+            background: white;
+            gap: 10px;
+        }
+
+        #messageInput {
+            flex: 1;
+            padding: 13px 16px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        #messageInput:focus {
+            border-color: #2e7d32;
+        }
+
+        #sendButton {
+            border: none;
+            background: #2e7d32;
+            color: white;
+            padding: 0 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        #sendButton:hover {
+            background: #256b2a;
+        }
+
+        #sendButton:disabled {
+            background: #9e9e9e;
+            cursor: not-allowed;
+        }
+
+        /* SUGGESTIONS */
+        .suggestions {
+            margin-top: 25px;
+        }
+
+        .suggestions h3 {
+            margin-bottom: 12px;
+        }
+
+        .suggestion-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .suggestion {
+            background: white;
+            border: 1px solid #c8ddca;
+            padding: 10px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            color: #2e7d32;
+        }
+
+        .suggestion:hover {
+            background: #e8f5e9;
+        }
+
+        .typing {
+            color: #777;
+            font-style: italic;
+        }
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 15px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                margin-top: 20px;
+            }
+
+            .message-content {
+                max-width: 90%;
+            }
+
+            .chat-messages {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">🌱 SmartAgri AI</div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="disease-detection.html">Disease Detection</a>
+            <a href="crop-recommendation.html">Crop Recommendation</a>
+            <a href="weather.html">Weather</a>
+        </div>
+    </nav>
+
+
+    <!-- MAIN -->
+    <div class="container">
+
+        <div class="header">
+            <h1>🤖 AI Farming Assistant</h1>
+            <p>
+                Ask questions about crops, farming, diseases, soil, weather and
+                agricultural practices.
+            </p>
+        </div>
+
+
+        <!-- CHAT -->
+        <div class="chat-container">
+
+            <div class="chat-header">
+                <h2>SmartAgri Assistant</h2>
+                <p>Your AI-powered farming companion</p>
+            </div>
+
+
+            <div class="chat-messages" id="chatMessages">
+
+                <div class="message bot">
+                    <div class="message-content">
+                        Hello! 👋 I'm your SmartAgri AI Assistant.
+                        <br><br>
+                        Ask me anything about farming, crops, diseases,
+                        soil, irrigation or weather.
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="chat-input-area">
+
+                <input
+                    type="text"
+                    id="messageInput"
+                    placeholder="Ask your farming question..."
+                    autocomplete="off"
+                >
+
+                <button id="sendButton">
+                    Send
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- SUGGESTIONS -->
+        <div class="suggestions">
+
+            <h3>Suggested Questions</h3>
+
+            <div class="suggestion-buttons">
+
+                <button class="suggestion">
+                    What crop should I grow?
+                </button>
+
+                <button class="suggestion">
+                    My tomato leaves are turning yellow. What should I do?
+                </button>
+
+                <button class="suggestion">
+                    When should I irrigate my field?
+                </button>
+
+                <button class="suggestion">
+                    How can I improve my soil?
+                </button>
+
+                <button class="suggestion">
+                    What fertilizer should I use?
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- API CONNECTION -->
+    <script src="api.js"></script>
+
+    <script>
+
+        const messageInput = document.getElementById("messageInput");
+        const sendButton = document.getElementById("sendButton");
+        const chatMessages = document.getElementById("chatMessages");
+
+        const FARM_ID = 1;
+
+
+        function addMessage(message, sender) {
+
+            const messageDiv = document.createElement("div");
+
+            messageDiv.className = `message ${sender}`;
+
+            const contentDiv = document.createElement("div");
+
+            contentDiv.className = "message-content";
+
+            contentDiv.textContent = message;
+
+            messageDiv.appendChild(contentDiv);
+
+            chatMessages.appendChild(messageDiv);
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+
+        function addTypingMessage() {
+
+            const messageDiv = document.createElement("div");
+
+            messageDiv.className = "message bot";
+
+            messageDiv.id = "typingMessage";
+
+            const contentDiv = document.createElement("div");
+
+            contentDiv.className = "message-content typing";
+
+            contentDiv.textContent = "SmartAgri AI is thinking...";
+
+            messageDiv.appendChild(contentDiv);
+
+            chatMessages.appendChild(messageDiv);
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+
+        function removeTypingMessage() {
+
+            const typingMessage =
+                document.getElementById("typingMessage");
+
+            if (typingMessage) {
+                typingMessage.remove();
+            }
+        }
+
+
+        async function sendMessage() {
+
+            const message = messageInput.value.trim();
+
+            if (!message) {
+                return;
+            }
+
+
+            // Show user message
+            addMessage(message, "user");
+
+            messageInput.value = "";
+
+            sendButton.disabled = true;
+
+            addTypingMessage();
+
+
+            try {
+
+                const data = await apiRequest(
+                    "/api/assistant/chat",
+                    {
+                        method: "POST",
+
+                        body: JSON.stringify({
+                            message: message,
+                            farm_id: FARM_ID
+                        })
+                    }
+                );
+
+
+                removeTypingMessage();
+
+
+                console.log("Assistant API response:", data);
+
+
+                /*
+                    The backend response may contain the
+                    assistant answer under different field names.
+                */
+
+                const reply = data.reply || "No response received from the AI Assistant.";
+
+
+                addMessage(reply, "bot");
+
+
+            } catch (error) {
+
+                console.error("Assistant error:", error);
+
+                removeTypingMessage();
+
+                addMessage(
+                    "Sorry, I couldn't connect to the AI Assistant. Please make sure the backend is running.",
+                    "bot"
+                );
+
+            } finally {
+
+                sendButton.disabled = false;
+
+                messageInput.focus();
+
+            }
+        }
+
+
+        // Send button
+        sendButton.addEventListener(
+            "click",
+            sendMessage
+        );
+
+
+        // Press Enter to send
+        messageInput.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Enter") {
+                    sendMessage();
+                }
+
+            }
+        );
+
+
+        // Suggested questions
+        document
+            .querySelectorAll(".suggestion")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    function() {
+
+                        messageInput.value =
+                            this.textContent.trim();
+
+                        messageInput.focus();
+
+                    }
+                );
+
+            });
+
+    </script>
+
+</body>
+</html>

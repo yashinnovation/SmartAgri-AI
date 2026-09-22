@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AgriSmart AI - Crop Recommendation</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#faf8ff] text-[#131b2e] min-h-screen" style="font-family:Inter,sans-serif">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl shadow-sm"><div class="h-20 max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between gap-4">
+<a href="index.html" class="flex items-center gap-2"><span class="w-9 h-9 rounded-xl bg-green-700 text-white flex items-center justify-center"><span class="material-symbols-outlined">eco</span></span><b class="text-lg text-green-700">AgriSmart AI</b></a>
+<nav class="hidden xl:flex items-center gap-1"><a href="index.html" class="px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100">Home</a><a href="dashboard.html" class="px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100">Dashboard</a><a href="disease-detection.html" class="px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100">Disease Detection</a><a href="crop-recommendation.html" class="px-3 py-2 rounded-lg bg-green-700 text-white font-semibold">Crop Recommendation</a><a href="#" class="px-3 py-2 rounded-lg text-gray-600">Soil Health</a><a href="#" class="px-3 py-2 rounded-lg text-gray-600">Weather</a><a href="#" class="px-3 py-2 rounded-lg text-gray-600">AI Assistant</a></nav>
+<a href="dashboard.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-green-700 text-white font-semibold">Open Dashboard</a>
+</div></header>
+<main class="pt-20"><section class="max-w-7xl mx-auto px-6 lg:px-10 py-12">
+<div class="max-w-3xl mb-10"><div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 text-green-800 text-xs font-bold mb-4"><span class="material-symbols-outlined text-[16px]">psychiatry</span>AI AGRICULTURE RECOMMENDATION ENGINE</div><h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Crop Recommendation</h1><p class="text-lg text-gray-600">Enter your soil and environmental conditions. AgriSmart AI will recommend suitable crops for your field.</p></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<section class="lg:col-span-7 bg-white rounded-2xl shadow-sm p-6 md:p-8"><div class="flex items-center gap-3 mb-7"><div class="w-11 h-11 rounded-xl bg-green-100 text-green-700 flex items-center justify-center"><span class="material-symbols-outlined">science</span></div><div><h2 class="text-xl font-bold">Field Conditions</h2><p class="text-sm text-gray-500">Provide the values from your field.</p></div></div>
+<form id="cropForm" class="space-y-6">
+<div><label class="block text-sm font-semibold mb-2">Soil Type</label><select id="soil_type" class="w-full rounded-xl border border-gray-200 px-4 py-3 bg-gray-50"><option>Loamy</option><option>Sandy</option><option>Clay</option><option>Silty</option><option>Black</option><option>Red</option></select></div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4"><div><label class="block text-sm font-semibold mb-2">pH</label><input id="ph" type="number" step="0.1" value="6.8" class="field"></div><div><label class="block text-sm font-semibold mb-2">Nitrogen (N)</label><input id="nitrogen" type="number" value="78" class="field"></div><div><label class="block text-sm font-semibold mb-2">Phosphorus (P)</label><input id="phosphorus" type="number" value="42" class="field"></div></div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4"><div><label class="block text-sm font-semibold mb-2">Potassium (K)</label><input id="potassium" type="number" value="65" class="field"></div><div><label class="block text-sm font-semibold mb-2">Temperature (°C)</label><input id="temperature" type="number" step="0.1" value="29" class="field"></div></div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4"><div><label class="block text-sm font-semibold mb-2">Humidity (%)</label><input id="humidity" type="number" step="0.1" value="68" class="field"></div><div><label class="block text-sm font-semibold mb-2">Rainfall (mm)</label><input id="rainfall" type="number" step="0.1" value="120" class="field"></div></div>
+<button id="recommendBtn" type="submit" class="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-green-700 text-white font-bold hover:bg-green-800"><span class="material-symbols-outlined">auto_awesome</span>Get AI Crop Recommendation</button><p id="formError" class="hidden text-sm text-red-600 bg-red-50 rounded-xl p-4"></p>
+</form></section>
+<section class="lg:col-span-5 bg-white rounded-2xl shadow-sm p-6 md:p-8"><div class="flex items-center gap-3 mb-7"><div class="w-11 h-11 rounded-xl bg-green-700 text-white flex items-center justify-center"><span class="material-symbols-outlined">recommend</span></div><div><h2 class="text-xl font-bold">Recommendation</h2><p class="text-sm text-gray-500">Backend result will appear here.</p></div></div>
+<div id="resultEmpty" class="rounded-2xl bg-gray-50 p-8 text-center"><span class="material-symbols-outlined text-5xl text-green-700">agriculture</span><h3 class="font-bold text-lg mt-4">Ready for Analysis</h3><p class="text-gray-500 text-sm mt-2">Enter your field conditions and click the recommendation button.</p></div>
+<div id="resultBox" class="hidden space-y-5"><div class="rounded-2xl bg-green-50 p-6"><p class="text-xs font-bold text-green-700 uppercase">Recommended Crop</p><h3 id="recommendedCrop" class="text-3xl font-extrabold text-green-800 mt-2">--</h3></div><div><h3 class="font-bold mb-2">AI Explanation</h3><p id="recommendationText" class="text-gray-600 leading-relaxed">--</p></div><div id="cropListContainer" class="hidden"><h3 class="font-bold mb-3">Suggested Crops</h3><div id="cropList" class="space-y-2"></div></div><button id="newRecommendationBtn" class="w-full px-5 py-3 rounded-xl bg-gray-100 font-semibold">Analyze Again</button></div>
+</section></div>
+<div class="mt-8 rounded-2xl bg-green-50 p-6 flex gap-4"><span class="material-symbols-outlined text-green-700 text-3xl">lightbulb</span><div><h3 class="font-bold text-green-900">Tip</h3><p class="text-sm text-green-800 mt-1">Use recent soil-test values and local weather conditions for more meaningful recommendations.</p></div></div>
+</section></main>
+<footer class="bg-gray-100 mt-10"><div class="max-w-7xl mx-auto px-6 lg:px-10 py-8"><p class="text-sm text-gray-500">© 2025 AgriSmart AI. Built for Sustainable Agriculture Hackathon.</p></div></footer>
+<style>.field{width:100%;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem 1rem;background:#f9fafb;outline:0}.field:focus{box-shadow:0 0 0 2px #15803d}</style>
+<script>
+(function () {
+
+    const API_BASE = "http://127.0.0.1:8000";
+
+    const form = document.getElementById("cropForm");
+    const btn = document.getElementById("recommendBtn");
+    const err = document.getElementById("formError");
+
+    const empty = document.getElementById("resultEmpty");
+    const box = document.getElementById("resultBox");
+
+    const cropEl = document.getElementById("recommendedCrop");
+    const textEl = document.getElementById("recommendationText");
+
+    const listWrap = document.getElementById("cropListContainer");
+    const list = document.getElementById("cropList");
+
+    form.addEventListener("submit", async function (e) {
+
+        e.preventDefault();
+
+        err.classList.add("hidden");
+
+        btn.disabled = true;
+        btn.textContent = "Analyzing...";
+
+        const payload = {
+            soil_type: document.getElementById("soil_type").value,
+            ph: Number(document.getElementById("ph").value),
+            nitrogen: Number(document.getElementById("nitrogen").value),
+            phosphorus: Number(document.getElementById("phosphorus").value),
+            potassium: Number(document.getElementById("potassium").value),
+            temperature: Number(document.getElementById("temperature").value),
+            humidity: Number(document.getElementById("humidity").value),
+            rainfall: Number(document.getElementById("rainfall").value)
+        };
+
+        console.log("Sending crop recommendation data:", payload);
+
+        try {
+
+            const response = await fetch(
+                API_BASE + "/api/crops/recommend",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                }
+            );
+
+            const data = await response.json();
+
+            console.log("Crop recommendation response:", data);
+
+            if (!response.ok) {
+                throw new Error(
+                    data.detail
+                        ? JSON.stringify(data.detail)
+                        : "Crop recommendation failed"
+                );
+            }
+
+            // Get recommendations from backend
+            const recommendations = data.recommendations || [];
+
+            if (recommendations.length === 0) {
+                throw new Error("No crop recommendations were returned.");
+            }
+
+            // First crop = main recommendation
+            const bestCrop = recommendations[0];
+
+            cropEl.textContent =
+                bestCrop.crop +
+                " (" +
+                bestCrop.suitability +
+                "% suitability)";
+
+            textEl.textContent =
+                bestCrop.reason ||
+                "This crop is suitable based on the provided soil and weather conditions.";
+
+            // Clear old crop list
+            list.innerHTML = "";
+
+            // Display all recommendations
+            recommendations.forEach(function (item) {
+
+                const div = document.createElement("div");
+
+                div.className =
+                    "px-4 py-3 rounded-xl bg-gray-50 flex items-center justify-between";
+
+                div.innerHTML =
+                    "<span class='font-semibold'>" +
+                    item.crop +
+                    "</span>" +
+                    "<span class='text-green-700 font-bold'>" +
+                    item.suitability +
+                    "% suitable" +
+                    "</span>";
+
+                list.appendChild(div);
+            });
+
+            // Show results
+            listWrap.classList.remove("hidden");
+            empty.classList.add("hidden");
+            box.classList.remove("hidden");
+
+        } catch (error) {
+
+            console.error("Crop recommendation error:", error);
+
+            err.textContent =
+                "Analysis failed: " + error.message;
+
+            err.classList.remove("hidden");
+
+        } finally {
+
+            btn.disabled = false;
+            btn.textContent = "Get AI Crop Recommendation";
+
+        }
+
+    });
+
+    // Analyze Again button
+    const newButton =
+        document.getElementById("newRecommendationBtn");
+
+    if (newButton) {
+
+        newButton.addEventListener("click", function () {
+
+            box.classList.add("hidden");
+            empty.classList.remove("hidden");
+            err.classList.add("hidden");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+    }
+
+})();
+</script>
+</body></html>
