@@ -15,7 +15,10 @@
 </div>
 <div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-space-sm rounded-xl">
 <div class="w-3 h-3 rounded-full bg-primary-container animate-ping"></div>
-<span class="font-label-md text-label-md text-on-surface-variant">Edge Model: Ready (Inference Latency ~800ms)</span>
+<span>
+    Analysis Complete •
+    <span id="inference-latency">--</span>
+</span>
 </div>
 </div>
 <div class="w-full bg-surface-container-lowest p-space-md sm:p-space-lg rounded-2xl shadow-sm">
@@ -107,13 +110,13 @@
 <span class="material-symbols-outlined">analytics</span>
 </div>
 <div>
-<h2 class="font-headline-sm text-headline-sm text-on-surface">Sample Analysis Result</h2>
-<span class="font-body-sm text-body-sm text-on-surface-variant">Real-time inference summary</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">
+    AI Disease Analysis Result
+</h2>
 </div>
 </div>
 <div class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm w-fit shadow-sm">
 <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-<span>Analysis Complete • 0.8s</span>
 </div>
 </div>
 <div class="relative w-full h-52 rounded-2xl overflow-hidden shadow-inner bg-surface-container">
@@ -232,252 +235,473 @@
 </div>
 <script>
 (function () {
-  const API_BASE = "http://127.0.0.1:8000";
+  console.log(
+    "DISEASE PAGE SCRIPT STARTED",
+    new Date().toLocaleTimeString()
+);
 
-  const dropzone = document.getElementById("dropzone");
-  const fileInput = document.getElementById("fileInput");
-  const sampleTomato = document.getElementById("sample-tomato");
-  const sampleMaize = document.getElementById("sample-maize");
-  const sampleRice = document.getElementById("sample-rice");
-  const diseaseName = document.getElementById("disease-name");
-  const pathogenSci = document.getElementById("pathogen-sci");
-  const confidenceMetric = document.getElementById("confidence-metric");
-  const severityMetric = document.getElementById("severity-metric");
-  const areaMetric = document.getElementById("area-metric");
-  const diagnosisText = document.getElementById("diagnosis-text");
-  const resultImage = document.getElementById("result-image");
-  const downloadBtn = document.getElementById("downloadBtn");
-  const reanalyzeBtn = document.getElementById("reanalyzeBtn");
-  const defaultImage = resultImage.src;
+    const API_BASE = "http://127.0.0.1:8000";
 
-  const dataSets = {
-    tomato: {
-      name: "Tomato Early Blight",
-      sci: "Alternaria solani",
-      conf: "92%",
-      sev: "Stage 2",
-      area: "~15%",
-      diag: "Characteristic concentric ring lesions detected on lower canopy leaves."
-    },
-    maize: {
-      name: "Maize Northern Leaf Blight",
-      sci: "Exserohilum turcicum",
-      conf: "95%",
-      sev: "Stage 3",
-      area: "~28%",
-      diag: "Long, elliptical grayish-green cigar-shaped lesions progressing into tan necrotic regions."
-    },
-    rice: {
-      name: "Rice Bacterial Leaf Blight",
-      sci: "Xanthomonas oryzae pv. oryzae",
-      conf: "89%",
-      sev: "Stage 1",
-      area: "~8%",
-      diag: "Water-soaked to yellowish stripes along leaf margins with early localized bacteriosis detected."
-    }
-  };
+    const dropzone = document.getElementById("dropzone");
+    const fileInput = document.getElementById("fileInput");
 
-  function updateUI(item) {
-    diseaseName.textContent = item.name || "Analysis Result";
-    pathogenSci.textContent = item.sci || "Pathogen information unavailable";
-    confidenceMetric.textContent = item.conf || "—";
-    severityMetric.textContent = item.sev || "—";
-    areaMetric.textContent = item.area || "—";
-    diagnosisText.textContent = item.diag || "No diagnosis details were returned by the backend.";
-  }
+    const diseaseName = document.getElementById("disease-name");
+    const pathogenSci = document.getElementById("pathogen-sci");
+    const confidenceMetric = document.getElementById("confidence-metric");
+    const severityMetric = document.getElementById("severity-metric");
+    const areaMetric = document.getElementById("area-metric");
+    const diagnosisText = document.getElementById("diagnosis-text");
 
-  function analyzing() {
-    diseaseName.textContent = "Analyzing Leaf...";
-    pathogenSci.textContent = "Sending image to AgriSmart AI backend";
-    confidenceMetric.textContent = "…";
-    severityMetric.textContent = "…";
-    areaMetric.textContent = "…";
-    diagnosisText.textContent = "The AI model is analyzing your uploaded image. Please wait.";
-  }
+    const resultImage = document.getElementById("result-image");
+    const downloadBtn = document.getElementById("downloadBtn");
+    const reanalyzeBtn = document.getElementById("reanalyzeBtn");
 
-  function errorUI(message) {
-    diseaseName.textContent = "Analysis Failed";
-    pathogenSci.textContent = "Backend could not complete the analysis";
-    confidenceMetric.textContent = "—";
-    severityMetric.textContent = "—";
-    areaMetric.textContent = "—";
-    diagnosisText.textContent = message;
-  }
+    const defaultImage = resultImage.src;
 
-  function highlightSample(selectedBtn) {
-    document.querySelectorAll(".sample-btn").forEach(btn => {
-      btn.classList.remove("bg-primary-container", "text-on-primary");
-      btn.classList.add("bg-surface-container", "text-on-surface");
-    });
-    selectedBtn.classList.remove("bg-surface-container", "text-on-surface");
-    selectedBtn.classList.add("bg-primary-container", "text-on-primary");
-  }
 
-  function findValue(obj, keys) {
-    if (!obj || typeof obj !== "object") return null;
-    for (const key of keys) {
-      if (obj[key] !== undefined && obj[key] !== null && obj[key] !== "") return obj[key];
-    }
-    for (const value of Object.values(obj)) {
-      if (value && typeof value === "object") {
-        const found = findValue(value, keys);
-        if (found !== null) return found;
-      }
-    }
-    return null;
-  }
+    // ==========================================
+    // UI: ANALYZING
+    // ==========================================
 
-  function confidence(value) {
-    if (value === null || value === undefined) return "—";
-    if (typeof value === "number") {
-      return `${Math.round(value <= 1 ? value * 100 : value)}%`;
-    }
-    const text = String(value);
-    return text.includes("%") ? text : `${text}%`;
-  }
+    function analyzing() {
 
-  function area(value) {
-    if (value === null || value === undefined) return "—";
-    const text = String(value);
-    return text.includes("%") ? text : `${text}%`;
-  }
+        diseaseName.textContent = "Analyzing Leaf...";
 
-  function normalizeResult(data) {
-    return {
-      name: String(findValue(data, ["disease_name", "disease", "prediction", "label", "class_name"]) || "Disease detected"),
-      sci: String(findValue(data, ["pathogen", "scientific_name", "scientificName", "species"]) || "Pathogen information unavailable"),
-      conf: confidence(findValue(data, ["confidence", "confidence_score", "probability", "score"])),
-      sev: String(findValue(data, ["severity", "severity_stage", "stage", "severity_level"]) || "Not provided"),
-      area: area(findValue(data, ["affected_area", "affected_area_percent", "area", "affected_percentage"])),
-      diag: String(findValue(data, ["diagnosis", "description", "details", "message", "explanation", "analysis"]) || "The backend returned a result, but no detailed diagnosis text was provided.")
-    };
-  }
+        pathogenSci.textContent =
+            "Sending image to AgriSmart AI backend";
 
-  async function analyzeImage(file) {
-    if (!file) return;
+        confidenceMetric.textContent = "…";
+        severityMetric.textContent = "…";
+        areaMetric.textContent = "…";
 
-    if (!file.type.startsWith("image/")) {
-      errorUI("Please select an image file.");
-      return;
+        diagnosisText.textContent =
+            "The AI model is analyzing your uploaded image. Please wait.";
     }
 
-    if (file.size > 10 * 1024 * 1024) {
-      errorUI("Image is larger than 10 MB. Please choose a smaller image.");
-      return;
+
+    // ==========================================
+    // UI: ERROR
+    // ==========================================
+
+    function errorUI(message) {
+
+        diseaseName.textContent = "Analysis Failed";
+
+        pathogenSci.textContent =
+            "Backend could not complete the analysis";
+
+        confidenceMetric.textContent = "—";
+        severityMetric.textContent = "—";
+        areaMetric.textContent = "—";
+
+        diagnosisText.textContent = message;
     }
 
-    resultImage.src = URL.createObjectURL(file);
-    analyzing();
 
-    const formData = new FormData();
+    // ==========================================
+    // UI: REAL RESULT
+    // ==========================================
 
-formData.append("image", file);
-formData.append("crop", "Tomato");
-formData.append("farm_id", "1");
+    function updateUI(data) {
 
-    try {
-      const response = await fetch(`${API_BASE}/api/disease/analyze`, {
-        method: "POST",
-        body: formData
-      });
+        console.log("Updating UI with:", data);
 
-      const rawText = await response.text();
-      let data = {};
-      try {
-        data = rawText ? JSON.parse(rawText) : {};
-      } catch {
-        data = { message: rawText };
-      }
+        diseaseName.textContent =
+            data.disease || "Disease detected";
 
-      if (!response.ok) {
-    let errorMessage = `HTTP ${response.status}`;
+        pathogenSci.textContent =
+            "ML model prediction";
 
-    if (Array.isArray(data.detail)) {
-        errorMessage = data.detail
-            .map(err => {
-                if (typeof err === "object") {
-                    return err.msg || JSON.stringify(err);
+        confidenceMetric.textContent =
+            `${Number(data.confidence).toFixed(2)}%`;
+
+        severityMetric.textContent =
+            data.severity || "Not assessed";
+
+        // We don't have affected-area segmentation yet.
+        areaMetric.textContent = "N/A";
+
+        diagnosisText.textContent =
+            data.recommendation ||
+            "No additional recommendation was returned.";
+
+        console.log("UI UPDATED SUCCESSFULLY");
+    }
+
+
+    // ==========================================
+    // IMAGE ANALYSIS
+    // ==========================================
+
+    async function analyzeImage(file) {
+
+        console.log("================================");
+        console.log("analyzeImage() STARTED");
+        console.log("File:", file);
+        console.log("================================");
+
+        if (!file) {
+            console.log("No file selected.");
+            return;
+        }
+
+
+        // Validate image
+        if (!file.type.startsWith("image/")) {
+
+            errorUI("Please select an image file.");
+
+            return;
+        }
+
+
+        if (file.size > 10 * 1024 * 1024) {
+
+            errorUI(
+                "Image is larger than 10 MB. Please choose a smaller image."
+            );
+
+            return;
+        }
+
+
+        // Show uploaded image
+        resultImage.src = URL.createObjectURL(file);
+
+        // Show loading state
+        analyzing();
+
+
+        // ======================================
+        // Prepare request
+        // ======================================
+
+        const formData = new FormData();
+
+        formData.append("image", file);
+        formData.append("crop", "Tomato");
+        formData.append("farm_id", "1");
+
+
+        console.log("Calling backend...");
+        console.log(
+            "URL:",
+            `${API_BASE}/api/disease/analyze`
+        );
+
+
+        try {
+
+            const startTime = performance.now();
+
+
+            // ==================================
+            // CALL FASTAPI
+            // ==================================
+
+            const response = await fetch(
+                `${API_BASE}/api/disease/analyze`,
+                {
+                    method: "POST",
+                    body: formData
                 }
-                return String(err);
-            })
-            .join(" | ");
-    } else if (typeof data.detail === "object" && data.detail !== null) {
-        errorMessage = data.detail.msg || JSON.stringify(data.detail);
-    } else if (data.detail) {
-        errorMessage = String(data.detail);
-    } else if (data.message) {
-        errorMessage = String(data.message);
+            );
+
+
+            const browserTime =
+                performance.now() - startTime;
+
+
+            console.log(
+                "Backend response received."
+            );
+
+            console.log(
+                "HTTP status:",
+                response.status
+            );
+
+            console.log(
+                "Browser request time:",
+                browserTime.toFixed(2),
+                "ms"
+            );
+
+
+            // ==================================
+            // READ RESPONSE
+            // ==================================
+
+            const rawText =
+                await response.text();
+
+            console.log(
+                "Raw backend response:",
+                rawText
+            );
+
+
+            let data;
+
+            try {
+
+                data =
+                    JSON.parse(rawText);
+
+            } catch (parseError) {
+
+                console.error(
+                    "Could not parse backend JSON:",
+                    parseError
+                );
+
+                throw new Error(
+                    "Backend returned invalid JSON."
+                );
+            }
+
+
+            console.log(
+                "Parsed backend data:",
+                data
+            );
+
+
+            // ==================================
+            // HANDLE HTTP ERROR
+            // ==================================
+
+            if (!response.ok) {
+
+                let message =
+                    `HTTP ${response.status}`;
+
+                if (data.detail) {
+
+                    if (typeof data.detail === "string") {
+
+                        message =
+                            data.detail;
+
+                    } else {
+
+                        message =
+                            JSON.stringify(data.detail);
+                    }
+                }
+
+                throw new Error(message);
+            }
+
+
+            // ==================================
+            // REAL ML RESULT
+            // ==================================
+
+            updateUI(data);
+
+
+            // Show real inference latency
+            const latencyElement =
+                document.querySelector(
+                    "#inference-latency"
+                );
+
+            if (latencyElement) {
+
+                latencyElement.textContent =
+                    `${Number(
+                        data.inference_latency_ms
+                    ).toFixed(0)} ms`;
+            }
+
+
+            console.log(
+                "================================"
+            );
+
+            console.log(
+                "REAL ML ANALYSIS COMPLETE"
+            );
+
+            console.log(
+                "Disease:",
+                data.disease
+            );
+
+            console.log(
+                "Confidence:",
+                data.confidence
+            );
+
+            console.log(
+                "Inference:",
+                data.inference_latency_ms,
+                "ms"
+            );
+
+            console.log(
+                "================================"
+            );
+
+        } catch (error) {
+
+            console.error(
+                "ML analysis failed:",
+                error
+            );
+
+            errorUI(
+                `Could not analyze the image. ${
+                    error.message ||
+                    "Check that the backend is running."
+                }`
+            );
+        }
     }
 
-    throw new Error(errorMessage);
-}
 
-      console.log("Disease API response:", data);
-      updateUI(normalizeResult(data));
-    } catch (error) {
-      console.error("Disease API request failed:", error);
-      errorUI(`Could not analyze the image. ${error.message || "Check that the backend is running on http://127.0.0.1:8000."}`);
-    }
-  }
+    // ==========================================
+    // FILE UPLOAD
+    // ==========================================
 
-  fileInput.addEventListener("change", e => analyzeImage(e.target.files?.[0]));
+    fileInput.addEventListener(
+        "change",
+        function (event) {
 
-  ["dragenter", "dragover"].forEach(name => {
-    dropzone.addEventListener(name, e => {
-      e.preventDefault();
-      dropzone.classList.add("ring-2", "ring-primary");
-    });
-  });
+            console.log(
+                "FILE INPUT CHANGE EVENT"
+            );
 
-  ["dragleave", "drop"].forEach(name => {
-    dropzone.addEventListener(name, e => {
-      e.preventDefault();
-      dropzone.classList.remove("ring-2", "ring-primary");
-    });
-  });
+            const file =
+                event.target.files?.[0];
 
-  dropzone.addEventListener("drop", e => {
-    const file = e.dataTransfer.files?.[0];
-    if (file) analyzeImage(file);
-  });
+            if (!file) {
 
-  reanalyzeBtn.addEventListener("click", () => {
-    fileInput.value = "";
-    resultImage.src = defaultImage;
+                console.log(
+                    "No file selected."
+                );
 
-    updateUI({
-        name: "Waiting for image...",
-        sci: "Upload an image to begin analysis",
-        conf: "--",
-        sev: "--",
-        area: "--",
-        diag: "Upload a crop image to receive an AI diagnosis."
-    });
+                return;
+            }
 
-    document.querySelectorAll(".sample-btn").forEach(btn => {
-        btn.classList.remove("bg-primary-container", "text-on-primary");
-    });
-});
+            console.log(
+                "Selected:",
+                file.name
+            );
 
-  sampleMaize.addEventListener("click", () => {
-    updateUI(dataSets.maize);
-    highlightSample(sampleMaize);
-  });
+            analyzeImage(file);
+        }
+    );
 
-  sampleRice.addEventListener("click", () => {
-    updateUI(dataSets.rice);
-    highlightSample(sampleRice);
-  });
 
-  reanalyzeBtn.addEventListener("click", () => {
-    fileInput.value = "";
-    resultImage.src = defaultImage;
-    updateUI(dataSets.tomato);
-    highlightSample(sampleTomato);
-  });
+    // ==========================================
+    // DRAG & DROP
+    // ==========================================
 
-  // Uses the browser print dialog so the current result can be saved as PDF.
-  downloadBtn.addEventListener("click", () => window.print());
+    ["dragenter", "dragover"].forEach(
+        eventName => {
+
+            dropzone.addEventListener(
+                eventName,
+                event => {
+
+                    event.preventDefault();
+
+                    dropzone.classList.add(
+                        "ring-2",
+                        "ring-primary"
+                    );
+                }
+            );
+        }
+    );
+
+
+    ["dragleave", "drop"].forEach(
+        eventName => {
+
+            dropzone.addEventListener(
+                eventName,
+                event => {
+
+                    event.preventDefault();
+
+                    dropzone.classList.remove(
+                        "ring-2",
+                        "ring-primary"
+                    );
+                }
+            );
+        }
+    );
+
+
+    dropzone.addEventListener(
+        "drop",
+        event => {
+
+            event.preventDefault();
+
+            const file =
+                event.dataTransfer.files?.[0];
+
+            if (file) {
+
+                analyzeImage(file);
+            }
+        }
+    );
+
+
+    // ==========================================
+    // ANALYZE ANOTHER
+    // ==========================================
+
+    reanalyzeBtn.addEventListener(
+        "click",
+        function () {
+
+            fileInput.value = "";
+
+            resultImage.src =
+                defaultImage;
+
+            diseaseName.textContent =
+                "Waiting for image...";
+
+            pathogenSci.textContent =
+                "Upload an image to begin analysis";
+
+            confidenceMetric.textContent =
+                "--";
+
+            severityMetric.textContent =
+                "--";
+
+            areaMetric.textContent =
+                "--";
+
+            diagnosisText.textContent =
+                "Upload a crop image to receive an AI diagnosis.";
+        }
+    );
+
+
+    // ==========================================
+    // PDF REPORT
+    // ==========================================
+
+    downloadBtn.addEventListener(
+        "click",
+        function () {
+
+            window.print();
+
+        }
+    );
+
+
 })();
 </script>
 </div></main><footer class="w-full bg-surface-container-low shadow-[0_-1px_8px_rgba(0,0,0,0.03)]"><div class="max-w-7xl mx-auto px-margin-md lg:px-margin-lg py-space-2xl flex flex-col gap-space-xl"><div class="flex flex-col md:flex-row md:items-start justify-between gap-space-lg"><div class="max-w-md"><div class="flex items-center gap-space-sm mb-space-sm"><img alt="AgriSmart AI Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WFeopV9FtlFH4kbRJe9uwbYiVcmu4948po0MsuePT8ex14hTgBYZUjFRd5Mwiic5IcdQEtYMgma2SblM3AeJW0R3-Vo6S4tn9OIVDzrRKN__l2TH1d5Wh3QC-Ghs4sEMQZJDwHowsbbGMYVbSn1y2qF7Hf3fFQnlmUCVG0ur8GR3OX1rNO7tSzJhGL7VA9YZuN6OTAsHcOiVg5KyPwEBWW98xTJa4Y3hSatPgDb2AOSsrbFfjG9oGv-fo"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">AgriSmart AI</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">AI-powered tools for smarter and more sustainable farming.</p></div><div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-lg"><nav class="flex flex-wrap items-center gap-space-md font-label-md text-label-md"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="index.html">Home</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="dashboard.html">Dashboard</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="disease-detection" href="disease-detection.html">Disease Detection</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="ai-assistant" href="ai-assistant.html">AI Assistant</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="crop-recommendation" href="crop-recommendation.html">Crop Recommendation</a></nav></div></div><div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pt-space-lg bg-surface-container-low"><div class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm w-fit"><span class="material-symbols-outlined text-[14px]">sensors</span><span>Future Scope: IoT sensors, Drone imagery & Yield prediction</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">© 2025 AgriSmart AI. Built for Sustainable Agriculture Hackathon.</p></div></div></footer></body></html>
